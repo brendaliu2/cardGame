@@ -1,7 +1,19 @@
-function DisplayCard({ img }) {
+/**
+ * Display a card
+ *
+ * Props: card object {image, value, suit}
+ *
+ * State:
+ * - None
+ *
+ *  cardGame => DisplayCard
+ */
+function DisplayCard({ card }) {
+
+  const {image, value, suit} = card;
   return (
     <div>
-      <img src={img} alt='card' />
+      <img src={image} alt={`${value} of ${suit}`} />
     </div>
   );
 }
