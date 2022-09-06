@@ -6,6 +6,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import DisplayCard from './DisplayCard';
 
 const CARD_BASE_URL =
   'https://deckofcardsapi.com/api/deck/';
@@ -29,17 +30,21 @@ function CardGame() {
   async function getNewCard() {
     const newCard = await axios.get(
       `${CARD_BASE_URL}${deck.deck_id}/draw/?count=1`
-    )
-    
+    );
+
     setCard(newCard);
   }
-  
+
   return (
     <div>
-      <button onclick={getNewCard}>Get New Card</button>
+      <button onClick={getNewCard}>Get New Card</button>
+      {card &&       
       <div>
         <DisplayCard img={card.cards[0].image} />
-      </div>
+      </div>}
+      
     </div>
-  )
+  );
 }
+
+export default CardGame;
